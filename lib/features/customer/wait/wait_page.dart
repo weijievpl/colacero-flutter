@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:drift/drift.dart' show Value;
 import '../../../data/local/database.dart';
@@ -261,11 +262,11 @@ class _WaitPageState extends ConsumerState<WaitPage>
                               size: 180,
                               backgroundColor: Colors.white,
                               eyeStyle: const QrEyeStyle(
-                                eyeShape: QrEyeShape.roundOuter,
+                                eyeShape: QrEyeShape.square,
                                 color: Color(0xFF4F46E5),
                               ),
                               dataModuleStyle: const QrDataModuleStyle(
-                                dataModuleShape: QrDataModuleShape.roundOuter,
+                                dataModuleShape: QrDataModuleShape.square,
                                 color: Color(0xFF1E1B4B),
                               ),
                             ),
