@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:drift/drift.dart' show Value;
 import '../../../data/local/database.dart';
 import '../../../data/local/database_provider.dart';
 
@@ -92,8 +93,8 @@ class _WaitPageState extends ConsumerState<WaitPage> {
             ],
             Card(elevation: 0, child: Padding(padding: const EdgeInsets.all(20), child: Column(children: [
               QrImageView(data: 'colacero:${ticket.ticketId}:${ticket.number}', version: QrVersions.auto, size: 160, backgroundColor: Colors.white,
-                eyeStyle: const QrEyeStyle(eyeShape: QrEyeShape.roundedRect, color: Color(0xFF6366F1)),
-                dataModuleStyle: const QrDataModuleStyle(dataModuleShape: QrDataModuleShape.roundedRect, color: Color(0xFF1E1B4B))),
+                eyeStyle: const QrEyeStyle(eyeShape: QrEyeShape.square, color: Color(0xFF6366F1)),
+                dataModuleStyle: const QrDataModuleStyle(dataModuleShape: QrDataModuleShape.square, color: Color(0xFF1E1B4B))),
               const SizedBox(height: 12),
               Text('Escanea para compartir tu estado', style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
             ]))),
