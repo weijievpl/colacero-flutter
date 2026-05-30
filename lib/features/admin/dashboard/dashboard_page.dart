@@ -27,7 +27,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
     final history = await db.getHistory(limit: 999);
     final today = DateTime.now();
     final servedToday = history.where((t) =>
-      t.ticketStatus == 2 // served &&
+      t.ticketStatus == 2 && // served
       t.servedAt != null &&
       t.servedAt!.day == today.day &&
       t.servedAt!.month == today.month
