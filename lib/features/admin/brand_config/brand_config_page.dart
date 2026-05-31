@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vibration/vibration.dart';
-import '../../data/local/database.dart';
-import '../../data/local/database_provider.dart';
+import '../../../data/local/database.dart';
+import '../../../data/local/database_provider.dart';
 
 // Brand config keys
 abstract class BrandKeys {
