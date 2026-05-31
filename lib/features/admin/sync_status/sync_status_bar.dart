@@ -2,17 +2,24 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import '../../../data/local/database.dart';
 import '../../../data/local/database_provider.dart';
 
-/// Sync status provider — watches pending actions count
+/// Sync status provider — watches pending actions count + connectivity
 final syncStatusProvider = StreamProvider<SyncState>((ref) {
   final db = ref.watch(appDatabaseProvider);
-  return db.watchPendingActionsCount().map((count) => SyncState(
-    pendingCount: count,
-    isOnline: true, // TODO: integrate connectivity_plus
-    lastSyncAt: null,
-  ));
+
+  // Combine pending count stream with connectivity stream
+  return db.watchPendingActionsCount().asyncMap((count) async {
+    final results = await Connectivity().checkConnectivity();
+    final isOnline = !results.every((r) => r == ConnectivityResult.none);
+    return SyncState(
+      pendingCount: count,
+      isOnline: isOnline,
+      lastSyncAt: null,
+    );
+  });
 });
 
 class SyncState {
@@ -69,21 +76,21 @@ class SyncStatusBar extends ConsumerWidget {
         String label;
 
         if (state.lastError != null) {
-          bgColor = const Color(0xFFEF4444).withValues(alpha: 0.1);
+          bgColor = cs.error.withValues(alpha: 0.1);
           icon = Icons.sync_problem_rounded;
-          label = 'Error de sync: ${state.lastError}';
+          label = '${state.lastError}';
         } else if (!state.isOnline) {
-          bgColor = const Color(0xFFF59E0B).withValues(alpha: 0.1);
+          bgColor = cs.warning?.withValues(alpha: 0.1) ?? const Color(0xFFF59E0B).withValues(alpha: 0.1);
           icon = Icons.wifi_off_rounded;
-          label = 'Sin conexión — ${state.pendingCount} cambios pendientes';
+          label = '${state.pendingCount} pending';
         } else if (state.isSyncing) {
           bgColor = cs.primaryContainer.withValues(alpha: 0.3);
           icon = Icons.sync_rounded;
-          label = 'Sincronizando...';
+          label = 'Syncing...';
         } else if (state.pendingCount > 0) {
-          bgColor = const Color(0xFFF59E0B).withValues(alpha: 0.1);
+          bgColor = cs.primary.withValues(alpha: 0.08);
           icon = Icons.cloud_upload_outlined;
-          label = '${state.pendingCount} cambios por sincronizar';
+          label = '${state.pendingCount} pending sync';
         } else {
           return const SizedBox.shrink();
         }
@@ -121,14 +128,7 @@ class SyncStatusBar extends ConsumerWidget {
                 GestureDetector(
                   onTap: () {
                     HapticFeedback.lightImpact();
-                    // Trigger manual sync — will be wired to sync service
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: const Text('Reintentando sincronización...'),
-                        backgroundColor: cs.primary,
-                        duration: const Duration(seconds: 1),
-                      ),
-                    );
+                    ref.invalidate(syncStatusProvider);
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
@@ -137,7 +137,7 @@ class SyncStatusBar extends ConsumerWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
-                      'Reintentar',
+                      'Retry',
                       style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w700,

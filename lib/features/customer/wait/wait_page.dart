@@ -19,6 +19,7 @@ class _WaitPageState extends State<WaitPage> with TickerProviderStateMixin {
   String _status = 'waiting'; // waiting, serving, served
   late AnimationController _pulseCtrl;
   late Animation<double> _pulseAnim;
+  Timer? _progressTimer;
 
   @override
   void initState() {
@@ -31,7 +32,7 @@ class _WaitPageState extends State<WaitPage> with TickerProviderStateMixin {
       CurvedAnimation(parent: _pulseCtrl, curve: Curves.easeInOut),
     );
     // Simulate queue progression
-    Timer.periodic(const Duration(seconds: 8), (t) {
+    _progressTimer = Timer.periodic(const Duration(seconds: 8), (t) {
       if (!mounted) return;
       setState(() {
         if (_position > 1) {
@@ -46,6 +47,7 @@ class _WaitPageState extends State<WaitPage> with TickerProviderStateMixin {
 
   @override
   void dispose() {
+    _progressTimer?.cancel();
     _pulseCtrl.dispose();
     super.dispose();
   }
