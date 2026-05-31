@@ -209,11 +209,11 @@ class _WaitPageState extends State<WaitPage> with TickerProviderStateMixin {
                                 size: 140,
                                 backgroundColor: Colors.white,
                                 eyeStyle: const QrEyeStyle(
-                                  eyeShape: QrEyeShape.roundOuter,
+                                  eyeShape: QrEyeShape.square,
                                   color: Color(0xFF0D47A1),
                                 ),
                                 dataModuleStyle: const QrDataModuleStyle(
-                                  dataModuleShape: QrDataModuleShape.roundOuter,
+                                  dataModuleShape: QrDataModuleShape.square,
                                   color: Color(0xFF1565C0),
                                 ),
                               ),
