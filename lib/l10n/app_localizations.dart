@@ -117,6 +117,34 @@ class AppLocalizations {
   String get itemsSynced => _t('itemsSynced');
   String get ticketRecovered => _t('ticketRecovered');
   String get restoredSuccessfully => _t('restoredSuccessfully');
+  // Onboarding
+  String get onboardingTitle1 => _t('onboardingTitle1');
+  String get onboardingSubtitle1 => _t('onboardingSubtitle1');
+  String get onboardingTitle2 => _t('onboardingTitle2');
+  String get onboardingSubtitle2 => _t('onboardingSubtitle2');
+  String get onboardingTitle3 => _t('onboardingTitle3');
+  String get onboardingSubtitle3 => _t('onboardingSubtitle3');
+  String get skip => _t('skip');
+  String get next => _t('next');
+  String get getStarted => _t('getStarted');
+  // Offline / Sync
+  String get offlineMode => _t('offlineMode');
+  String get backOnline => _t('backOnline');
+  String get lastSynced => _t('lastSynced');
+  String get retryAll => _t('retryAll');
+  String get retryFailed => _t('retryFailed');
+  String get syncFailedCount => _t('syncFailedCount');
+  // Confirmations
+  String get confirmCancelTitle => _t('confirmCancelTitle');
+  String get confirmCancelBody => _t('confirmCancelBody');
+  String get confirmNoShowTitle => _t('confirmNoShowTitle');
+  String get confirmNoShowBody => _t('confirmNoShowBody');
+  String get confirmClearQueueTitle => _t('confirmClearQueueTitle');
+  String get confirmClearQueueBody => _t('confirmClearQueueBody');
+  String get confirmLogoutTitle => _t('confirmLogoutTitle');
+  String get confirmLogoutBody => _t('confirmLogoutBody');
+  String get doNotAskAgain => _t('doNotAskAgain');
+  String get confirm => _t('confirm');
 
   String _t(String key) {
     final lang = locale.languageCode;
@@ -230,6 +258,31 @@ class AppLocalizations {
       'itemsSynced': 'cambios sincronizados correctamente',
       'ticketRecovered': 'Turno recuperado',
       'restoredSuccessfully': 'ha sido restaurado',
+      'onboardingTitle1': 'Saca tu turno',
+      'onboardingSubtitle1': 'Elige tu motivo y obtén un número al instante. Sin esperas innecesarias.',
+      'onboardingTitle2': 'Espera cómodamente',
+      'onboardingSubtitle2': 'Recibe notificaciones en tiempo real sobre tu posición y tiempo estimado.',
+      'onboardingTitle3': 'Gestiona fácilmente',
+      'onboardingSubtitle3': 'Panel admin para llamar turnos, ver análisis y configurar tu marca.',
+      'skip': 'Omitir',
+      'next': 'Siguiente',
+      'getStarted': 'Comenzar',
+      'offlineMode': 'Sin conexión — trabajando offline',
+      'backOnline': 'Conexión restaurada',
+      'lastSynced': 'Última sync',
+      'retryAll': 'Reintentar todo',
+      'retryFailed': 'Reintentar fallidos',
+      'syncFailedCount': 'fallidos',
+      'confirmCancelTitle': 'Cancelar turno',
+      'confirmCancelBody': '¿Estás seguro de que deseas cancelar este turno? Esta acción no se puede deshacer.',
+      'confirmNoShowTitle': 'Marcar como no-show',
+      'confirmNoShowBody': '¿El cliente no se presentó? Esto marcará el turno como ausente.',
+      'confirmClearQueueTitle': 'Vaciar cola',
+      'confirmClearQueueBody': 'Esto cancelará todos los turnos pendientes. ¿Continuar?',
+      'confirmLogoutTitle': 'Cerrar sesión',
+      'confirmLogoutBody': '¿Salir del panel de operador?',
+      'doNotAskAgain': 'No volver a preguntar',
+      'confirm': 'Confirmar',
     },
     'en': {
       'appTitle': 'ColaCero',
@@ -337,6 +390,31 @@ class AppLocalizations {
       'itemsSynced': 'changes synced successfully',
       'ticketRecovered': 'Ticket recovered',
       'restoredSuccessfully': 'has been restored',
+      'onboardingTitle1': 'Get your ticket',
+      'onboardingSubtitle1': 'Choose your reason and get a number instantly. No unnecessary waiting.',
+      'onboardingTitle2': 'Wait comfortably',
+      'onboardingSubtitle2': 'Receive real-time notifications about your position and estimated time.',
+      'onboardingTitle3': 'Manage easily',
+      'onboardingSubtitle3': 'Admin panel to call tickets, view analytics, and configure your brand.',
+      'skip': 'Skip',
+      'next': 'Next',
+      'getStarted': 'Get started',
+      'offlineMode': 'No connection — working offline',
+      'backOnline': 'Connection restored',
+      'lastSynced': 'Last synced',
+      'retryAll': 'Retry all',
+      'retryFailed': 'Retry failed',
+      'syncFailedCount': 'failed',
+      'confirmCancelTitle': 'Cancel ticket',
+      'confirmCancelBody': 'Are you sure you want to cancel this ticket? This action cannot be undone.',
+      'confirmNoShowTitle': 'Mark as no-show',
+      'confirmNoShowBody': 'Did the customer not show up? This will mark the ticket as absent.',
+      'confirmClearQueueTitle': 'Clear queue',
+      'confirmClearQueueBody': 'This will cancel all pending tickets. Continue?',
+      'confirmLogoutTitle': 'Log out',
+      'confirmLogoutBody': 'Exit the operator panel?',
+      'doNotAskAgain': "Don't ask again",
+      'confirm': 'Confirm',
     },
     'pt': {
       'appTitle': 'ColaCero',
@@ -370,6 +448,13 @@ class AppLocalizations {
       'saving': 'Salvando...',
       'retry': 'Tentar novamente',
       'syncing': 'Sincronizando...',
+      'offlineMode': 'Sem conexão — trabalhando offline',
+      'backOnline': 'Conexão restaurada',
+      'skip': 'Pular',
+      'next': 'Próximo',
+      'getStarted': 'Começar',
+      'confirm': 'Confirmar',
+      'doNotAskAgain': 'Não perguntar novamente',
     },
     'fr': {
       'appTitle': 'ColaCero',
@@ -403,6 +488,13 @@ class AppLocalizations {
       'saving': 'Enregistrement...',
       'retry': 'Réessayer',
       'syncing': 'Synchronisation...',
+      'offlineMode': 'Pas de connexion — mode hors ligne',
+      'backOnline': 'Connexion rétablie',
+      'skip': 'Passer',
+      'next': 'Suivant',
+      'getStarted': 'Commencer',
+      'confirm': 'Confirmer',
+      'doNotAskAgain': 'Ne plus demander',
     },
     'de': {
       'appTitle': 'ColaCero',
@@ -436,6 +528,13 @@ class AppLocalizations {
       'saving': 'Speichern...',
       'retry': 'Erneut versuchen',
       'syncing': 'Synchronisierung...',
+      'offlineMode': 'Keine Verbindung — Offline-Modus',
+      'backOnline': 'Verbindung wiederhergestellt',
+      'skip': 'Überspringen',
+      'next': 'Weiter',
+      'getStarted': 'Loslegen',
+      'confirm': 'Bestätigen',
+      'doNotAskAgain': 'Nicht mehr fragen',
     },
   };
 }

@@ -5,6 +5,8 @@ import 'app/router.dart';
 import 'app/theme.dart';
 import 'services/notification_service.dart';
 import 'l10n/app_localizations.dart';
+import 'shared/widgets/offline_banner.dart';
+import 'shared/widgets/onboarding_overlay.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,6 +43,13 @@ class ColaCeroApp extends ConsumerWidget {
         Locale('de'),
       ],
       locale: const Locale('es'),
+      builder: (context, child) {
+        return OnboardingOverlay(
+          child: OfflineBanner(
+            child: child ?? const SizedBox.shrink(),
+          ),
+        );
+      },
     );
   }
 }
