@@ -299,6 +299,34 @@ class _JoinPageState extends ConsumerState<JoinPage>
                       ),
                     ),
                   ),
+                  const SizedBox(height: 8),
+
+                  // Recovery link
+                  Center(
+                    child: TextButton.icon(
+                      onPressed: () => context.go('/recover'),
+                      icon: const Icon(Icons.restore_rounded, size: 16),
+                      label: const Text('Recuperar turno perdido'),
+                      style: TextButton.styleFrom(
+                        foregroundColor: cs.primary,
+                        textStyle: const TextStyle(fontSize: 13),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+
+                  // Appointment link
+                  Center(
+                    child: TextButton.icon(
+                      onPressed: () => context.go('/appointment'),
+                      icon: const Icon(Icons.event_outlined, size: 16),
+                      label: const Text('Agendar cita'),
+                      style: TextButton.styleFrom(
+                        foregroundColor: cs.tertiary,
+                        textStyle: const TextStyle(fontSize: 13),
+                      ),
+                    ),
+                  ),
                   const SizedBox(height: 20),
                 ]),
               ),

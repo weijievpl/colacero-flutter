@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:vibration/vibration.dart';
 import 'package:drift/drift.dart' show Value;
 import '../../../data/local/database.dart';
@@ -148,6 +149,33 @@ class _DashboardPageState extends ConsumerState<DashboardPage>
                               style: IconButton.styleFrom(
                                 backgroundColor: cs.surfaceContainerLow,
                               ),
+                            ),
+                            const SizedBox(width: 8),
+                            PopupMenuButton<String>(
+                              icon: const Icon(Icons.more_vert_rounded),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                              onSelected: (v) {
+                                if (v == 'analytics') context.go('/analytics');
+                                if (v == 'audit') context.go('/audit-log');
+                              },
+                              itemBuilder: (_) => [
+                                PopupMenuItem(
+                                  value: 'analytics',
+                                  child: Row(children: [
+                                    Icon(Icons.insights_outlined, size: 18, color: cs.primary),
+                                    const SizedBox(width: 10),
+                                    const Text('Análisis'),
+                                  ]),
+                                ),
+                                PopupMenuItem(
+                                  value: 'audit',
+                                  child: Row(children: [
+                                    Icon(Icons.history_toggle_off_outlined, size: 18, color: cs.tertiary),
+                                    const SizedBox(width: 10),
+                                    const Text('Historial de eventos'),
+                                  ]),
+                                ),
+                              ],
                             ),
                           ],
                         ),
