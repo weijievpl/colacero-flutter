@@ -33,7 +33,10 @@ android {
     signingConfigs {
         create("release") {
             val keystorePropertiesFile = rootProject.file("keystore.properties")
+            val ksEnvFile = System.getenv("KEYSTORE_FILE")
+
             if (keystorePropertiesFile.exists()) {
+                // Local build: use keystore.properties
                 val props = Properties().apply {
                     load(FileInputStream(keystorePropertiesFile))
                 }
@@ -41,22 +44,26 @@ android {
                 storePassword = props["storePassword"] as String
                 keyAlias = props["keyAlias"] as String
                 keyPassword = props["keyPassword"] as String
-            } else {
-                // CI: use env vars
-                val ksFile = System.getenv("KEYSTORE_FILE")
-                if (!ksFile.isNullOrEmpty()) {
-                    storeFile = file(ksFile)
-                }
+            } else if (!ksEnvFile.isNullOrEmpty() && file(ksEnvFile).exists()) {
+                // CI build: use env vars + decoded keystore file
+                storeFile = file(ksEnvFile)
                 storePassword = System.getenv("KEYSTORE_PASSWORD") ?: ""
                 keyAlias = System.getenv("KEY_ALIAS") ?: "colacero"
                 keyPassword = System.getenv("KEY_PASSWORD") ?: ""
             }
+            // If neither exists, signingConfig stays unconfigured → falls back to debug
         }
     }
 
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("release")
+            // Only use release signing if keystore is actually configured
+            val releaseSigning = signingConfigs.getByName("release")
+            if (releaseSigning.storeFile != null && releaseSigning.storeFile!!.exists()) {
+                signingConfig = releaseSigning
+            } else {
+                signingConfig = signingConfigs.getByName("debug")
+            }
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
