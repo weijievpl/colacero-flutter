@@ -80,7 +80,7 @@ class SyncStatusBar extends ConsumerWidget {
           icon = Icons.sync_problem_rounded;
           label = '${state.lastError}';
         } else if (!state.isOnline) {
-          bgColor = cs.warning?.withValues(alpha: 0.1) ?? const Color(0xFFF59E0B).withValues(alpha: 0.1);
+          bgColor = const Color(0xFFF59E0B).withValues(alpha: 0.1);
           icon = Icons.wifi_off_rounded;
           label = '${state.pendingCount} pending';
         } else if (state.isSyncing) {
