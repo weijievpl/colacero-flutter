@@ -1,3 +1,6 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -29,20 +32,21 @@ android {
 
     signingConfigs {
         create("release") {
-            // Keystore is injected via CI environment variables
-            // For local builds, create a keystore.properties file
             val keystorePropertiesFile = rootProject.file("keystore.properties")
             if (keystorePropertiesFile.exists()) {
-                val props = java.util.Properties().apply {
-                    load(keystorePropertiesFile.inputStream())
+                val props = Properties().apply {
+                    load(FileInputStream(keystorePropertiesFile))
                 }
                 storeFile = file(props["storeFile"] as String)
                 storePassword = props["storePassword"] as String
                 keyAlias = props["keyAlias"] as String
                 keyPassword = props["keyPassword"] as String
             } else {
-                // Fallback for CI: use env vars
-                storeFile = file(System.getenv("KEYSTORE_FILE") ?: "release/colacero-release.keystore")
+                // CI: use env vars
+                val ksFile = System.getenv("KEYSTORE_FILE")
+                if (!ksFile.isNullOrEmpty()) {
+                    storeFile = file(ksFile)
+                }
                 storePassword = System.getenv("KEYSTORE_PASSWORD") ?: ""
                 keyAlias = System.getenv("KEY_ALIAS") ?: "colacero"
                 keyPassword = System.getenv("KEY_PASSWORD") ?: ""
