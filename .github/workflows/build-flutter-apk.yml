@@ -28,7 +28,17 @@ jobs:
       - name: Generate code
         run: dart run build_runner build --delete-conflicting-outputs || true
 
+      - name: Decode Keystore
+        if: ${{ secrets.KEYSTORE_BASE64 != '' }}
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/release/colacero-release.keystore
+
       - name: Build Release APK (split per ABI)
+        env:
+          KEYSTORE_FILE: release/colacero-release.keystore
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: flutter build apk --release --split-per-abi
 
       - name: Upload arm64-v8a APK

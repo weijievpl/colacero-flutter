@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'app/router.dart';
 import 'app/theme.dart';
 import 'services/notification_service.dart';
+import 'l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +27,19 @@ class ColaCeroApp extends ConsumerWidget {
       darkTheme: ColaCeroTheme.dark(),
       themeMode: themeMode,
       routerConfig: router,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('es'),
+        Locale('en'),
+        Locale('pt'),
+        Locale('fr'),
+        Locale('de'),
+      ],
       locale: const Locale('es'),
     );
   }

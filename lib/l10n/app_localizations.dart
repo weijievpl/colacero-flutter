@@ -1,0 +1,454 @@
+import 'dart:async';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
+
+class AppLocalizations {
+  final Locale locale;
+  AppLocalizations(this.locale);
+
+  static const delegate = _AppLocalizationsDelegate();
+
+  static AppLocalizations of(BuildContext context) {
+    return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
+  }
+
+  String get appTitle => _t('appTitle');
+  String get joinTitle => _t('joinTitle');
+  String get joinSubtitle => _t('joinSubtitle');
+  String get nameOptional => _t('nameOptional');
+  String get visitReason => _t('visitReason');
+  String get people => _t('people');
+  String get person => _t('person');
+  String get phoneOptional => _t('phoneOptional');
+  String get getTicket => _t('getTicket');
+  String get generating => _t('generating');
+  String get adminAccess => _t('adminAccess');
+  String get recoverTicket => _t('recoverTicket');
+  String get scheduleAppointment => _t('scheduleAppointment');
+  String get waitTitle => _t('waitTitle');
+  String get yourNumber => _t('yourNumber');
+  String get waiting => _t('waiting');
+  String get served => _t('served');
+  String get cancelled => _t('cancelled');
+  String get position => _t('position');
+  String get estWait => _t('estWait');
+  String get minutes => _t('minutes');
+  String get nextInLine => _t('nextInLine');
+  String get beforeYou => _t('beforeYou');
+  String get scanToShare => _t('scanToShare');
+  String get backToHome => _t('backToHome');
+  String get recoveryTitle => _t('recoveryTitle');
+  String get lostYourTicket => _t('lostYourTicket');
+  String get recoverySubtitle => _t('recoverySubtitle');
+  String get phone => _t('phone');
+  String get ticketCode => _t('ticketCode');
+  String get search => _t('search');
+  String get searching => _t('searching');
+  String get noTicketFound => _t('noTicketFound');
+  String get enterAtLeastOne => _t('enterAtLeastOne');
+  String get appointmentTitle => _t('appointmentTitle');
+  String get fullNameRequired => _t('fullNameRequired');
+  String get reason => _t('reason');
+  String get date => _t('date');
+  String get selectDate => _t('selectDate');
+  String get availableSlots => _t('availableSlots');
+  String get additionalNotes => _t('additionalNotes');
+  String get confirmAppointment => _t('confirmAppointment');
+  String get scheduling => _t('scheduling');
+  String get slotTaken => _t('slotTaken');
+  String get dashboardTitle => _t('dashboardTitle');
+  String get dashboardSubtitle => _t('dashboardSubtitle');
+  String get inQueue => _t('inQueue');
+  String get servedToday => _t('servedToday');
+  String get currentQueue => _t('currentQueue');
+  String get callNext => _t('callNext');
+  String get noTicketsWaiting => _t('noTicketsWaiting');
+  String get noTicketsSubtitle => _t('noTicketsSubtitle');
+  String get analytics => _t('analytics');
+  String get auditLog => _t('auditLog');
+  String get brandConfig => _t('brandConfig');
+  String get analysisTitle => _t('analysisTitle');
+  String get todaySummary => _t('todaySummary');
+  String get created => _t('created');
+  String get avgWait => _t('avgWait');
+  String get noShow => _t('noShow');
+  String get statusDistribution => _t('statusDistribution');
+  String get backToDashboard => _t('backToDashboard');
+  String get auditTitle => _t('auditTitle');
+  String get exportCsv => _t('exportCsv');
+  String get all => _t('all');
+  String get noEvents => _t('noEvents');
+  String get noEventsSubtitle => _t('noEventsSubtitle');
+  String get copiedToClipboard => _t('copiedToClipboard');
+  String get brandConfigTitle => _t('brandConfigTitle');
+  String get preview => _t('preview');
+  String get businessName => _t('businessName');
+  String get brandColor => _t('brandColor');
+  String get welcomeMessage => _t('welcomeMessage');
+  String get notifPrefix => _t('notifPrefix');
+  String get saveChanges => _t('saveChanges');
+  String get saving => _t('saving');
+  String get resetDefaults => _t('resetDefaults');
+  String get resetConfirmTitle => _t('resetConfirmTitle');
+  String get resetConfirmBody => _t('resetConfirmBody');
+  String get cancel => _t('cancel');
+  String get restore => _t('restore');
+  String get savedSuccess => _t('savedSuccess');
+  String get lowContrastWarning => _t('lowContrastWarning');
+  String get pinTitle => _t('pinTitle');
+  String get pinSubtitle => _t('pinSubtitle');
+  String get pinLabel => _t('pinLabel');
+  String get login => _t('login');
+  String get wrongPin => _t('wrongPin');
+  String get tooManyAttempts => _t('tooManyAttempts');
+  String get syncError => _t('syncError');
+  String get offline => _t('offline');
+  String get pendingChanges => _t('pendingChanges');
+  String get syncing => _t('syncing');
+  String get retry => _t('retry');
+  String get retryingSync => _t('retryingSync');
+  String get errorPrefix => _t('errorPrefix');
+  String get ticketServedMsg => _t('ticketServedMsg');
+  String get turnApproaching => _t('turnApproaching');
+  String get itsYourTurn => _t('itsYourTurn');
+  String get approachCounter => _t('approachCounter');
+  String get appointmentReminder => _t('appointmentReminder');
+  String get syncComplete => _t('syncComplete');
+  String get itemsSynced => _t('itemsSynced');
+  String get ticketRecovered => _t('ticketRecovered');
+  String get restoredSuccessfully => _t('restoredSuccessfully');
+
+  String _t(String key) {
+    final lang = locale.languageCode;
+    return _translations[lang]?[key] ?? _translations['es']?[key] ?? key;
+  }
+
+  static const Map<String, Map<String, String>> _translations = {
+    'es': {
+      'appTitle': 'ColaCero',
+      'joinTitle': 'Sacar turno',
+      'joinSubtitle': 'Selecciona tu motivo y espera cómodamente',
+      'nameOptional': 'Nombre (opcional)',
+      'visitReason': 'Motivo de visita',
+      'people': 'personas',
+      'person': 'persona',
+      'phoneOptional': 'Teléfono (opcional)',
+      'getTicket': 'Sacar turno',
+      'generating': 'Generando...',
+      'adminAccess': 'Acceso administrador',
+      'recoverTicket': 'Recuperar turno perdido',
+      'scheduleAppointment': 'Agendar cita',
+      'waitTitle': 'Esperando',
+      'yourNumber': 'TU NÚMERO',
+      'waiting': 'Esperando',
+      'served': '¡Atendido!',
+      'cancelled': 'Cancelado',
+      'position': 'Posición',
+      'estWait': 'Espera est.',
+      'minutes': 'minutos',
+      'nextInLine': '¡Eres el siguiente!',
+      'beforeYou': 'antes de ti',
+      'scanToShare': 'Escanea para compartir tu estado',
+      'backToHome': 'Volver al inicio',
+      'recoveryTitle': 'Recuperar turno',
+      'lostYourTicket': '¿Perdiste tu turno?',
+      'recoverySubtitle': 'Busca por teléfono o código de recuperación para volver a tu lugar en la fila',
+      'phone': 'Teléfono',
+      'ticketCode': 'Código de turno',
+      'search': 'Recuperar turno',
+      'searching': 'Buscando...',
+      'noTicketFound': 'No se encontró ningún turno activo con esos datos',
+      'enterAtLeastOne': 'Ingresa al menos un dato para buscar',
+      'appointmentTitle': 'Agendar cita',
+      'fullNameRequired': 'Nombre completo *',
+      'reason': 'Motivo',
+      'date': 'Fecha',
+      'selectDate': 'Seleccionar fecha',
+      'availableSlots': 'Horario disponible',
+      'additionalNotes': 'Notas adicionales',
+      'confirmAppointment': 'Confirmar cita',
+      'scheduling': 'Agendando...',
+      'slotTaken': 'Este horario ya está ocupado. Elige otro.',
+      'dashboardTitle': 'Panel Admin',
+      'dashboardSubtitle': 'Gestión de turnos en tiempo real',
+      'inQueue': 'En cola',
+      'servedToday': 'Atendidos hoy',
+      'currentQueue': 'Cola actual',
+      'callNext': 'Llamar siguiente',
+      'noTicketsWaiting': 'No hay turnos en espera',
+      'noTicketsSubtitle': 'Los nuevos turnos aparecerán aquí automáticamente',
+      'analytics': 'Análisis',
+      'auditLog': 'Historial de eventos',
+      'brandConfig': 'Configuración de marca',
+      'analysisTitle': 'Análisis del día',
+      'todaySummary': 'Resumen de hoy',
+      'created': 'Creados',
+      'avgWait': 'Espera promedio',
+      'noShow': 'No-show',
+      'statusDistribution': 'Distribución de estados',
+      'backToDashboard': 'Volver al panel',
+      'auditTitle': 'Historial de eventos',
+      'exportCsv': 'Exportar CSV',
+      'all': 'Todos',
+      'noEvents': 'Sin eventos registrados',
+      'noEventsSubtitle': 'Los eventos aparecerán aquí cuando se realicen acciones',
+      'copiedToClipboard': 'registros copiados al portapapeles',
+      'brandConfigTitle': 'Configuración de marca',
+      'preview': 'Vista previa',
+      'businessName': 'Nombre del negocio',
+      'brandColor': 'Color de marca',
+      'welcomeMessage': 'Mensaje de bienvenida',
+      'notifPrefix': 'Prefijo de notificaciones',
+      'saveChanges': 'Guardar cambios',
+      'saving': 'Guardando...',
+      'resetDefaults': 'Restaurar predeterminados',
+      'resetConfirmTitle': 'Restaurar valores predeterminados',
+      'resetConfirmBody': 'Esto restablecerá toda la configuración de marca a los valores originales. ¿Continuar?',
+      'cancel': 'Cancelar',
+      'restore': 'Restaurar',
+      'savedSuccess': 'Configuración de marca guardada',
+      'lowContrastWarning': 'Este color puede tener bajo contraste con texto blanco',
+      'pinTitle': 'Acceso de operador',
+      'pinSubtitle': 'Ingresa tu PIN para acceder al panel',
+      'pinLabel': 'PIN',
+      'login': 'Ingresar',
+      'wrongPin': 'PIN incorrecto',
+      'tooManyAttempts': 'Demasiados intentos. Espera un momento.',
+      'syncError': 'Error de sync',
+      'offline': 'Sin conexión',
+      'pendingChanges': 'cambios pendientes',
+      'syncing': 'Sincronizando...',
+      'retry': 'Reintentar',
+      'retryingSync': 'Reintentando sincronización...',
+      'errorPrefix': 'Error',
+      'ticketServedMsg': 'atendido',
+      'turnApproaching': '¡Tu turno se acerca!',
+      'itsYourTurn': '¡Es tu turno!',
+      'approachCounter': 'acércate al mostrador',
+      'appointmentReminder': 'Recordatorio de cita',
+      'syncComplete': 'Sincronización completada',
+      'itemsSynced': 'cambios sincronizados correctamente',
+      'ticketRecovered': 'Turno recuperado',
+      'restoredSuccessfully': 'ha sido restaurado',
+    },
+    'en': {
+      'appTitle': 'ColaCero',
+      'joinTitle': 'Get a ticket',
+      'joinSubtitle': 'Select your reason and wait comfortably',
+      'nameOptional': 'Name (optional)',
+      'visitReason': 'Visit reason',
+      'people': 'people',
+      'person': 'person',
+      'phoneOptional': 'Phone (optional)',
+      'getTicket': 'Get ticket',
+      'generating': 'Generating...',
+      'adminAccess': 'Admin access',
+      'recoverTicket': 'Recover lost ticket',
+      'scheduleAppointment': 'Schedule appointment',
+      'waitTitle': 'Waiting',
+      'yourNumber': 'YOUR NUMBER',
+      'waiting': 'Waiting',
+      'served': 'Served!',
+      'cancelled': 'Cancelled',
+      'position': 'Position',
+      'estWait': 'Est. wait',
+      'minutes': 'minutes',
+      'nextInLine': "You're next!",
+      'beforeYou': 'ahead of you',
+      'scanToShare': 'Scan to share your status',
+      'backToHome': 'Back to home',
+      'recoveryTitle': 'Recover ticket',
+      'lostYourTicket': 'Lost your ticket?',
+      'recoverySubtitle': 'Search by phone or recovery code to get back in line',
+      'phone': 'Phone',
+      'ticketCode': 'Ticket code',
+      'search': 'Recover ticket',
+      'searching': 'Searching...',
+      'noTicketFound': 'No active ticket found with that information',
+      'enterAtLeastOne': 'Enter at least one field to search',
+      'appointmentTitle': 'Schedule appointment',
+      'fullNameRequired': 'Full name *',
+      'reason': 'Reason',
+      'date': 'Date',
+      'selectDate': 'Select date',
+      'availableSlots': 'Available slots',
+      'additionalNotes': 'Additional notes',
+      'confirmAppointment': 'Confirm appointment',
+      'scheduling': 'Scheduling...',
+      'slotTaken': 'This slot is already taken. Choose another.',
+      'dashboardTitle': 'Admin Panel',
+      'dashboardSubtitle': 'Real-time queue management',
+      'inQueue': 'In queue',
+      'servedToday': 'Served today',
+      'currentQueue': 'Current queue',
+      'callNext': 'Call next',
+      'noTicketsWaiting': 'No tickets waiting',
+      'noTicketsSubtitle': 'New tickets will appear here automatically',
+      'analytics': 'Analytics',
+      'auditLog': 'Event log',
+      'brandConfig': 'Brand settings',
+      'analysisTitle': 'Daily analysis',
+      'todaySummary': "Today's summary",
+      'created': 'Created',
+      'avgWait': 'Average wait',
+      'noShow': 'No-show',
+      'statusDistribution': 'Status distribution',
+      'backToDashboard': 'Back to dashboard',
+      'auditTitle': 'Event log',
+      'exportCsv': 'Export CSV',
+      'all': 'All',
+      'noEvents': 'No events recorded',
+      'noEventsSubtitle': 'Events will appear here when actions are performed',
+      'copiedToClipboard': 'records copied to clipboard',
+      'brandConfigTitle': 'Brand settings',
+      'preview': 'Preview',
+      'businessName': 'Business name',
+      'brandColor': 'Brand color',
+      'welcomeMessage': 'Welcome message',
+      'notifPrefix': 'Notification prefix',
+      'saveChanges': 'Save changes',
+      'saving': 'Saving...',
+      'resetDefaults': 'Reset to defaults',
+      'resetConfirmTitle': 'Reset to defaults',
+      'resetConfirmBody': 'This will restore all brand settings to original values. Continue?',
+      'cancel': 'Cancel',
+      'restore': 'Restore',
+      'savedSuccess': 'Brand settings saved',
+      'lowContrastWarning': 'This color may have low contrast with white text',
+      'pinTitle': 'Operator access',
+      'pinSubtitle': 'Enter your PIN to access the panel',
+      'pinLabel': 'PIN',
+      'login': 'Login',
+      'wrongPin': 'Incorrect PIN',
+      'tooManyAttempts': 'Too many attempts. Please wait.',
+      'syncError': 'Sync error',
+      'offline': 'Offline',
+      'pendingChanges': 'pending changes',
+      'syncing': 'Syncing...',
+      'retry': 'Retry',
+      'retryingSync': 'Retrying sync...',
+      'errorPrefix': 'Error',
+      'ticketServedMsg': 'served',
+      'turnApproaching': 'Your turn is coming!',
+      'itsYourTurn': "It's your turn!",
+      'approachCounter': 'please approach the counter',
+      'appointmentReminder': 'Appointment reminder',
+      'syncComplete': 'Sync complete',
+      'itemsSynced': 'changes synced successfully',
+      'ticketRecovered': 'Ticket recovered',
+      'restoredSuccessfully': 'has been restored',
+    },
+    'pt': {
+      'appTitle': 'ColaCero',
+      'joinTitle': 'Pegar senha',
+      'joinSubtitle': 'Selecione o motivo e aguarde confortavelmente',
+      'nameOptional': 'Nome (opcional)',
+      'visitReason': 'Motivo da visita',
+      'people': 'pessoas',
+      'person': 'pessoa',
+      'phoneOptional': 'Telefone (opcional)',
+      'getTicket': 'Pegar senha',
+      'generating': 'Gerando...',
+      'adminAccess': 'Acesso admin',
+      'recoverTicket': 'Recuperar senha perdida',
+      'scheduleAppointment': 'Agendar consulta',
+      'dashboardTitle': 'Painel Admin',
+      'dashboardSubtitle': 'Gestão de filas em tempo real',
+      'inQueue': 'Na fila',
+      'servedToday': 'Atendidos hoje',
+      'callNext': 'Chamar próximo',
+      'noTicketsWaiting': 'Nenhuma senha em espera',
+      'analytics': 'Análises',
+      'auditLog': 'Histórico de eventos',
+      'brandConfig': 'Configuração de marca',
+      'pinTitle': 'Acesso do operador',
+      'pinSubtitle': 'Digite seu PIN para acessar o painel',
+      'login': 'Entrar',
+      'wrongPin': 'PIN incorreto',
+      'cancel': 'Cancelar',
+      'saveChanges': 'Salvar alterações',
+      'saving': 'Salvando...',
+      'retry': 'Tentar novamente',
+      'syncing': 'Sincronizando...',
+    },
+    'fr': {
+      'appTitle': 'ColaCero',
+      'joinTitle': 'Prendre un ticket',
+      'joinSubtitle': 'Sélectionnez votre motif et attendez confortablement',
+      'nameOptional': 'Nom (facultatif)',
+      'visitReason': 'Motif de visite',
+      'people': 'personnes',
+      'person': 'personne',
+      'phoneOptional': 'Téléphone (facultatif)',
+      'getTicket': 'Prendre un ticket',
+      'generating': 'Génération...',
+      'adminAccess': 'Accès administrateur',
+      'recoverTicket': 'Récupérer le ticket perdu',
+      'scheduleAppointment': 'Planifier un rendez-vous',
+      'dashboardTitle': 'Panneau admin',
+      'dashboardSubtitle': 'Gestion des files en temps réel',
+      'inQueue': 'En file',
+      'servedToday': 'Servis aujourd\'hui',
+      'callNext': 'Appeler le suivant',
+      'noTicketsWaiting': 'Aucun ticket en attente',
+      'analytics': 'Analyses',
+      'auditLog': 'Journal d\'événements',
+      'brandConfig': 'Paramètres de marque',
+      'pinTitle': 'Accès opérateur',
+      'pinSubtitle': 'Entrez votre PIN pour accéder au panneau',
+      'login': 'Connexion',
+      'wrongPin': 'PIN incorrect',
+      'cancel': 'Annuler',
+      'saveChanges': 'Enregistrer',
+      'saving': 'Enregistrement...',
+      'retry': 'Réessayer',
+      'syncing': 'Synchronisation...',
+    },
+    'de': {
+      'appTitle': 'ColaCero',
+      'joinTitle': 'Nummer ziehen',
+      'joinSubtitle': 'Wählen Sie Ihren Grund und warten Sie bequem',
+      'nameOptional': 'Name (optional)',
+      'visitReason': 'Besuchsgrund',
+      'people': 'Personen',
+      'person': 'Person',
+      'phoneOptional': 'Telefon (optional)',
+      'getTicket': 'Nummer ziehen',
+      'generating': 'Generierung...',
+      'adminAccess': 'Admin-Zugang',
+      'recoverTicket': 'Verlorene Nummer wiederherstellen',
+      'scheduleAppointment': 'Termin vereinbaren',
+      'dashboardTitle': 'Admin-Panel',
+      'dashboardSubtitle': 'Echtzeit-Warteschlangenverwaltung',
+      'inQueue': 'In Warteschlange',
+      'servedToday': 'Heute bedient',
+      'callNext': 'Nächsten aufrufen',
+      'noTicketsWaiting': 'Keine Tickets wartend',
+      'analytics': 'Analysen',
+      'auditLog': 'Ereignisprotokoll',
+      'brandConfig': 'Markeneinstellungen',
+      'pinTitle': 'Operator-Zugang',
+      'pinSubtitle': 'Geben Sie Ihre PIN ein, um auf das Panel zuzugreifen',
+      'login': 'Anmelden',
+      'wrongPin': 'Falsche PIN',
+      'cancel': 'Abbrechen',
+      'saveChanges': 'Änderungen speichern',
+      'saving': 'Speichern...',
+      'retry': 'Erneut versuchen',
+      'syncing': 'Synchronisierung...',
+    },
+  };
+}
+
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+  const _AppLocalizationsDelegate();
+
+  @override
+  bool isSupported(Locale locale) => ['es', 'en', 'pt', 'fr', 'de'].contains(locale.languageCode);
+
+  @override
+  Future<AppLocalizations> load(Locale locale) async => AppLocalizations(locale);
+
+  @override
+  bool shouldReload(_AppLocalizationsDelegate old) => false;
+}

@@ -6,6 +6,7 @@ import 'package:vibration/vibration.dart';
 import 'package:drift/drift.dart' show Value;
 import '../../../data/local/database.dart';
 import '../../../data/local/database_provider.dart';
+import '../sync_status/sync_status_bar.dart';
 
 class DashboardPage extends ConsumerStatefulWidget {
   const DashboardPage({super.key});
@@ -157,6 +158,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage>
                               onSelected: (v) {
                                 if (v == 'analytics') context.go('/analytics');
                                 if (v == 'audit') context.go('/audit-log');
+                                if (v == 'brand') context.go('/brand-config');
                               },
                               itemBuilder: (_) => [
                                 PopupMenuItem(
@@ -175,12 +177,23 @@ class _DashboardPageState extends ConsumerState<DashboardPage>
                                     const Text('Historial de eventos'),
                                   ]),
                                 ),
+                                PopupMenuItem(
+                                  value: 'brand',
+                                  child: Row(children: [
+                                    Icon(Icons.palette_outlined, size: 18, color: const Color(0xFFF59E0B)),
+                                    const SizedBox(width: 10),
+                                    const Text('Configuración de marca'),
+                                  ]),
+                                ),
                               ],
                             ),
                           ],
                         ),
                       ),
                     ),
+
+                    // ── Sync Status Bar ──
+                    const SliverToBoxAdapter(child: SyncStatusBar()),
 
                     // ── Stats Row ──
                     SliverToBoxAdapter(

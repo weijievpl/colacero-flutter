@@ -198,6 +198,13 @@ class AppDatabase extends _$AppDatabase {
         .get();
   }
 
+  Stream<int> watchPendingActionsCount() {
+    final query = selectOnly(offlineActions)
+      ..addColumns([offlineActions.id.count()])
+      ..where(offlineActions.isProcessed.equals(false));
+    return query.watch().map((rows) => rows.first.read(offlineActions.id.count()) ?? 0);
+  }
+
   Future<void> markActionProcessed(int id) {
     return (update(offlineActions)..where((a) => a.id.equals(id)))
         .write(const OfflineActionsCompanion(isProcessed: Value(true)));

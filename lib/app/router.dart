@@ -8,6 +8,8 @@ import '../features/customer/appointment/appointment_page.dart';
 import '../features/admin/dashboard/dashboard_page.dart';
 import '../features/admin/analytics/analytics_page.dart';
 import '../features/admin/audit_log/audit_log_page.dart';
+import '../features/admin/brand_config/brand_config_page.dart';
+import '../features/admin/auth/operator_pin_gate.dart';
 
 final themeModeProvider = StateProvider<ThemeMode>((ref) => ThemeMode.system);
 
@@ -91,9 +93,9 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: '/dashboard',
-        builder: (context, state) => const DashboardPage(),
+        builder: (context, state) => OperatorPinGate(child: const DashboardPage()),
         pageBuilder: (context, state) => CustomTransitionPage(
-          child: const DashboardPage(),
+          child: OperatorPinGate(child: const DashboardPage()),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             final scaleTween = Tween<double>(begin: 0.95, end: 1.0).animate(
               CurvedAnimation(parent: animation, curve: Curves.easeOutCubic),
@@ -122,6 +124,17 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const AuditLogPage(),
         pageBuilder: (context, state) => CustomTransitionPage(
           child: const AuditLogPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+          transitionDuration: const Duration(milliseconds: 300),
+        ),
+      ),
+      GoRoute(
+        path: '/brand-config',
+        builder: (context, state) => const BrandConfigPage(),
+        pageBuilder: (context, state) => CustomTransitionPage(
+          child: const BrandConfigPage(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(opacity: animation, child: child);
           },

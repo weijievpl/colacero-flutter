@@ -27,9 +27,38 @@ android {
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        create("release") {
+            // Keystore is injected via CI environment variables
+            // For local builds, create a keystore.properties file
+            val keystorePropertiesFile = rootProject.file("keystore.properties")
+            if (keystorePropertiesFile.exists()) {
+                val props = java.util.Properties().apply {
+                    load(keystorePropertiesFile.inputStream())
+                }
+                storeFile = file(props["storeFile"] as String)
+                storePassword = props["storePassword"] as String
+                keyAlias = props["keyAlias"] as String
+                keyPassword = props["keyPassword"] as String
+            } else {
+                // Fallback for CI: use env vars
+                storeFile = file(System.getenv("KEYSTORE_FILE") ?: "release/colacero-release.keystore")
+                storePassword = System.getenv("KEYSTORE_PASSWORD") ?: ""
+                keyAlias = System.getenv("KEY_ALIAS") ?: "colacero"
+                keyPassword = System.getenv("KEY_PASSWORD") ?: ""
+            }
+        }
+    }
+
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 }
