@@ -157,7 +157,6 @@ class ColaCeroTheme {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
         backgroundColor: isDark ? const Color(0xFF27272A) : const Color(0xFF18181B),
         contentTextStyle: GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white),
-        margin: const EdgeInsets.all(16),
       ),
 
       // Divider — subtle
