@@ -78,12 +78,19 @@ class _WaitPageState extends State<WaitPage> with TickerProviderStateMixin {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'ColaCero',
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        color: Colors.white.withValues(alpha: 0.9),
-                        fontWeight: FontWeight.w700,
-                      ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Image.asset('assets/logo.jpg', width: 28, height: 28),
+                        const SizedBox(width: 8),
+                        Text(
+                          'ColaCero',
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            color: Colors.white.withValues(alpha: 0.9),
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),

@@ -1,7 +1,7 @@
 name: colacero
 description: ColaCero - Native Flutter Queue Management App
 publish_to: 'none'
-version: 5.1.0+11
+version: 5.1.2+12
 
 environment:
   sdk: ^3.7.0
@@ -37,3 +37,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/logo.jpg

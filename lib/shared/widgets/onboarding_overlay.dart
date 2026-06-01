@@ -53,7 +53,7 @@ class _OnboardingOverlayState extends State<OnboardingOverlay> {
 
     final pages = [
       _OnboardPage(
-        icon: Icons.confirmation_number_rounded,
+        useLogo: true,
         title: l10n.onboardingTitle1,
         subtitle: l10n.onboardingSubtitle1,
       ),
@@ -142,12 +142,14 @@ class _OnboardingOverlayState extends State<OnboardingOverlay> {
 }
 
 class _OnboardPage extends StatelessWidget {
-  final IconData icon;
+  final IconData? icon;
+  final bool useLogo;
   final String title;
   final String subtitle;
 
   const _OnboardPage({
-    required this.icon,
+    this.icon,
+    this.useLogo = false,
     required this.title,
     required this.subtitle,
   });
@@ -162,14 +164,19 @@ class _OnboardPage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              padding: const EdgeInsets.all(24),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: theme.colorScheme.primaryContainer,
-              ),
-              child: Icon(icon, size: 48, color: theme.colorScheme.onPrimaryContainer),
-            ),
+            useLogo
+                ? ClipRRect(
+                    borderRadius: BorderRadius.circular(24),
+                    child: Image.asset('assets/logo.jpg', width: 120, height: 120, fit: BoxFit.cover),
+                  )
+                : Container(
+                    padding: const EdgeInsets.all(24),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: theme.colorScheme.primaryContainer,
+                    ),
+                    child: Icon(icon, size: 48, color: theme.colorScheme.onPrimaryContainer),
+                  ),
             const SizedBox(height: 32),
             Text(
               title,
